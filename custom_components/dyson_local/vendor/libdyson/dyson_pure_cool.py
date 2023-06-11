@@ -52,6 +52,8 @@ class DysonPureCoolBase(DysonFanDevice):
     @property
     def hepa_filter_life(self) -> Optional[int]:
         """Return HEPA filter life in percentage."""
+        if (filter_life is None):
+            return None
         return int(self._get_field_value(self._status, "hflr"))
 
     @property
