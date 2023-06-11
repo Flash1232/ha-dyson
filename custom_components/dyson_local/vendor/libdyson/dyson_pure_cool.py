@@ -130,19 +130,19 @@ class DysonPureCool(DysonPureCoolBase):
         return self._get_field_value(self._status, "oson") in ["OION", "ON"]
 
     @property
-    def oscillation_angle_low(self) -> Optional[int]:
+    def oscillation_angle_low(self) -> int:
         """Return oscillation low angle."""
         angle = self._get_field_value(self._status, "osal")
         if angle is None:
-            return None
+            return 90
         return int(angle)
 
     @property
-    def oscillation_angle_high(self) -> Optional[int]:
+    def oscillation_angle_high(self) -> int:
         """Return oscillation high angle."""
         angle = self._get_field_value(self._status, "osau")
         if angle is None:
-            return None
+            return 270
         return int(angle)
 
     def enable_oscillation(
