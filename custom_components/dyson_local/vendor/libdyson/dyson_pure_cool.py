@@ -43,7 +43,7 @@ class DysonPureCoolBase(DysonFanDevice):
     def carbon_filter_life(self) -> Optional[int]:
         """Return carbon filter life in percentage."""
         filter_life = self._get_field_value(self._status, "cflr")
-        if filter_life == None:
+        if filter_life is None:
             return None
         if filter_life == "INV":
             return None
@@ -52,9 +52,10 @@ class DysonPureCoolBase(DysonFanDevice):
     @property
     def hepa_filter_life(self) -> Optional[int]:
         """Return HEPA filter life in percentage."""
+        filter_life = self._get_field_value(self._status, "hflr")
         if (filter_life is None):
             return None
-        return int(self._get_field_value(self._status, "hflr"))
+        return int(filter_life)
 
     @property
     def particulate_matter_2_5(self):
